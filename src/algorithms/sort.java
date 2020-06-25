@@ -45,6 +45,9 @@ public class sort {
 		}
 	}
 	
+	static void mergeSort(int[] vetor) {
+		
+	}
 	
 	
 }
