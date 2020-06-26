@@ -1,7 +1,11 @@
 package algorithms;
 
+import java.util.Arrays;
+
 public class sort {
 
+/***	Método Selection Sort	***/	
+//	
 	static void selectionSort(int[] vetor) { 
 		int tamanho = vetor.length;
 		for (int i = 0; i < (tamanho-1); i++) {
@@ -17,7 +21,9 @@ public class sort {
 			}
 		}
 	}
-	
+
+/***	Método Bubble Sort	***/
+//	
 	static void bubbleSort(int[] vetor) {
 		int tamanho = vetor.length;
 		for(int j=0;j<tamanho-1;j++) {
@@ -32,6 +38,8 @@ public class sort {
 		
 	}
 	
+/***	Método Insertion Sort ***/		
+//	
 	static void insertionSort(int[] vetor) {
 		int tamanho = vetor.length;
 		for(int i = 1; i< tamanho ; i++) {
@@ -45,9 +53,66 @@ public class sort {
 		}
 	}
 	
+	
+/***		Método mergeSort	***/	
+	
+//	Inicializa o método a partir de um vetor de inteiros
+//	
 	static void mergeSort(int[] vetor) {
-		
+		int inicio=0;
+		int fim = vetor.length;
+
+		if(fim - inicio > 1) {
+			int meio = (fim + inicio)/2;
+			mergeSort(vetor, inicio, meio);
+			mergeSort(vetor, meio, fim);
+			merge(vetor, inicio, meio, fim);
+		}
+	}
+	
+//	Metodo recursivo, o mergeSort(vetor) chama o metodo mergeSort(vetor, inicio, fim)	
+//	Neste método o mergeSort(vetor, inicio, fim) é chamando até que o vetor tenha tamanho 1
+//	Então o método merge(vetor, inicio, meio, fim) é chamado.	
+//	
+	static void mergeSort(int[] vetor, int inicio , int fim ) {
+
+		if(fim - inicio > 1) {
+			int meio = (fim + inicio)/2;
+			mergeSort(vetor, inicio, meio);
+			mergeSort(vetor, meio, fim);
+			merge(vetor, inicio, meio, fim);
+		}
+	}
+
+//	Este método é responsável por organizar e unir o vetor original. 
+//	É um método recursivo, começando com um vetor de tamanho 1 até o vetor com a metade tamanho
+//	
+//	
+	static void merge(int[] vetor, int inicio, int meio, int fim) {
+		int[] left = Arrays.copyOfRange(vetor, inicio, meio);
+		int[] right = Arrays.copyOfRange(vetor, meio, fim);
+		int top_left = 0;
+		int top_right = 0;
+
+		for(int k = inicio; k < fim; k++) {
+			if(top_left >= left.length) {
+				vetor[k] = right[top_right];
+				top_right++;
+			} else 
+				if(top_right >= right.length) {
+					vetor[k] = left[top_left];
+					top_left++;
+				} else
+					if(left[top_left] < right[top_right]) {
+						vetor[k] = left[top_left];
+						top_left++;
+					}else {
+						vetor[k] = right[top_right];
+						top_right++;
+					}
+		}
 	}
 	
 	
 }
+
