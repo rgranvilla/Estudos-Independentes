@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class sortTeste {
 
-	static int tamanho = 100; // Tamanho do vetor a ser gerado para o teste.
+	static int tamanho = 6; // Tamanho do vetor a ser gerado para o teste.
 	static int[] vetor = new int[tamanho];
 
 	public static void main(String[] args) {
@@ -13,7 +13,7 @@ public class sortTeste {
 
 		Random numeroAleatorio = new Random();
 
-		//int[] vetorInverso = {10,9,8,7,6,5,4,3,2,1,0};
+//		int[] vetorInverso = {9,8,7,6,5,4,3,2,1,0};
 		
 		
 		for (int i=0; i<tamanho; i++) {
@@ -21,13 +21,11 @@ public class sortTeste {
 		}
 		
 		imprimirVetor.ImprimirVetor(vetor);
-		
 		sort.mergeSort(vetor);
-
 		imprimirVetor.ImprimirVetor(vetor);
 		
 //		imprimirVetor.ImprimirVetor(vetorInverso);
-//		sort.mergeSort(vetorInverso);
+//		sort.quickSort(vetorInverso);
 //		imprimirVetor.ImprimirVetor(vetorInverso);
 	
 	}

@@ -113,6 +113,46 @@ public class sort {
 		}
 	}
 	
+
+// Método QuickSort
 	
+	static void quickSort(int[] vetor) {
+		int inicio=0;
+		int fim = vetor.length-1;
+		
+		if(inicio < fim) {
+			int pivot  = partition(vetor, inicio, fim);
+			quickSort(vetor, inicio, pivot-1);
+			quickSort(vetor, pivot+1, fim);
+		}
+	}
+	
+	static void quickSort(int[] vetor, int inicio, int fim) {
+		
+		if(inicio < fim) {
+			int pivot  = partition(vetor, inicio, fim);
+			quickSort(vetor, inicio, pivot-1);
+			quickSort(vetor, pivot+1, fim);
+		}
+	}
+	
+	public static int partition(int[] vetor, int inicio, int fim) {
+		int pivot = vetor[fim];
+		int i = inicio;
+		for(int j = inicio; j < fim; j++) {
+			if(vetor[j] <= pivot) {
+				int aux = vetor[i];
+				vetor[i] = vetor[j];
+				vetor[j] = aux;
+				i = i+1;
+			}
+		}
+		int aux = vetor[fim];
+		vetor[fim] = vetor[i];
+		vetor[i] = aux;
+		return i;
+				
+		
+	}
 }
 
